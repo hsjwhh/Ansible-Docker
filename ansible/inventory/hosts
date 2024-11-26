@@ -1,0 +1,4 @@
+[local]
+debian12 ansible_host=192.168.1.1 ansible_user=user ansible_ssh_private_key_file=/key/debian12_id_rsa
+[Debian]
+u1 ansible_host=u1.com ansible_user=root ansible_ssh_private_key_file=./key/u1_id_rsa

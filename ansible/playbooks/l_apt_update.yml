@@ -1,0 +1,16 @@
+---
+- name: Update APT on multiple servers
+  hosts: local
+  become: yes
+  become_user: root
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      register: update_result
+
+    - name: Upgrade all packages if updates are available
+      apt:
+        upgrade: dist
+      when: update_result.changed
