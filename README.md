@@ -58,3 +58,17 @@ ansible/
 
 5. ansible.cfg
 • 配置 Ansible 的行为，如默认 inventory 文件位置、密钥路径等。
+
+6. 使用方法
+• 进入容器使用
+  ```bash
+  sudo docker run --rm -it -v ./conf:/ansible -v ./keys:/root/.shh --network=host ansible bash
+  # 进入容器后
+  ansible-playbook  -i inventory/hosts playbooks/l_apt_update.yml --ask-become-pass
+  ansible-playbook  -i inventory/hosts playbooks/u_apt_update.yml
+  ```
+  
+• 配合 docker compose 文件使用
+  ```bash
+  sudo docker-compose run --rm ansible -i inventory/hosts playbooks/l_apt_update.yml --ask-become-pass
+  ```
